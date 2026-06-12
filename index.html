@@ -11,6 +11,8 @@
 </head>
 
 <body>
+
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
@@ -28,6 +30,11 @@
             <li class="nav-item"><a class="nav-link" href="#destinos">Destinos</a></li>
             <li class="nav-item"><a class="nav-link" href="#review">Avaliações</a></li>
             <li class="nav-item"><a class="nav-link" href="#address">Endereço</a></li>
+
+            <button id="tema-btn" class="tema-btn">
+              🌙 Tema Escuro
+            </button>
+
             <class="icons"> <img width="28" height="28" src="https://img.icons8.com/ios-glyphs/60/search--v1.png"
                 alt="Pesquisar"> <img width="28" height="28"
                 src="https://img.icons8.com/ios-glyphs/30/shopping-cart--v1.png" alt="Carrinho">
@@ -35,7 +42,6 @@
         </div>
 
       </nav>
-
 
     </section>
   </header>
@@ -70,16 +76,55 @@
     <div class="destinos-container">
       <div class="destino-card"> <img src="./jericoacoara.jpg" alt="Jericoacoara">
         <h3>Jericoacoara - CE</h3>
-        <p>Dunas, lagoas cristalinas e o famoso pôr do sol na Duna do Pôr do Sol.</p>
+        <p>Dunas, lagoas cristalinas e o famoso pôr do sol.</p>
+
+        <div id="jeri" class="extra-info">
+          <p>
+            Também oferece passeios de buggy, esportes aquáticos e uma vida noturna bastante animada.
+          </p>
+        </div>
+
+        <button onclick="mostrarInfo('jeri', this)">
+          Ver Mais
+        </button>
       </div>
-      <div class="destino-card"> <img src="./pipa.jpg" alt="Praia da Pipa">
+      <div class="destino-card">
+        <img src="./pipa.jpg" alt="Praia da Pipa">
+
         <h3>Praia da Pipa - RN</h3>
+
         <p>Falésias incríveis e chance de ver golfinhos bem de perto.</p>
+
+        <div id="pipa" class="extra-info">
+          <p>
+            Um dos destinos mais famosos do Rio Grande do Norte,
+            com praias paradisíacas, mirantes e trilhas ecológicas.
+          </p>
+        </div>
+
+        <button onclick="mostrarInfo('pipa', this)">
+          Ver Mais
+        </button>
       </div>
-      <div class="destino-card"> <img src="./lencois-maranhenses.jpg" alt="Maragogi">
-        <h3>LENÇOIS MARANHENSES</h3>
-        <p>É conhecido pela sua vasta paisagem desértica de grandes dunas de areia branca e pelas lagoas sazonais de
-          água da chuva</p>
+      <div class="destino-card">
+        <img src="./lencois-maranhenses.jpg" alt="Lençóis Maranhenses">
+
+        <h3>LENÇÓIS MARANHENSES</h3>
+
+        <p>
+          É conhecido pela sua vasta paisagem desértica de grandes dunas de areia branca.
+        </p>
+
+        <div id="lencois" class="extra-info">
+          <p>
+            Durante o período de chuvas, formam-se lagoas cristalinas entre as dunas,
+            criando uma das paisagens mais impressionantes do Brasil.
+          </p>
+        </div>
+
+        <button onclick="mostrarInfo('lencois', this)">
+          Ver Mais
+        </button>
       </div>
     </div>
   </section>
@@ -121,6 +166,39 @@
       </div>
     </div>
   </section>
+  <script>
+    window.onload = function () {
+
+      const temaBtn = document.getElementById("tema-btn");
+
+      temaBtn.addEventListener("click", function () {
+
+        document.body.classList.toggle("dark-mode");
+
+        if (document.body.classList.contains("dark-mode")) {
+          temaBtn.innerHTML = "☀️ Tema Claro";
+        } else {
+          temaBtn.innerHTML = "🌙 Tema Escuro";
+        }
+
+      });
+
+    };
+
+    function mostrarInfo(id, botao) {
+
+      const info = document.getElementById(id);
+
+      if (info.style.display === "block") {
+        info.style.display = "none";
+        botao.innerHTML = "Ver Mais";
+      } else {
+        info.style.display = "block";
+        botao.innerHTML = "Ver Menos";
+      }
+
+    }
+  </script>
   <section class="address" id="address">
     <h2 class="title">Onde <span>Estamos</span></h2>
     <div class="map-container"> <iframe
